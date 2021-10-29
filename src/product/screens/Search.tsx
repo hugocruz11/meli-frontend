@@ -1,9 +1,9 @@
 import React from "react";
-import {useQuery, gql} from "@apollo/client";
-import {useLocation, Link} from "react-router-dom";
-import {Stack, Text, Image, Divider} from "@chakra-ui/react";
+import { useQuery, gql } from "@apollo/client";
+import { useLocation, Link } from "react-router-dom";
+import { Stack, Text, Image, Divider } from "@chakra-ui/react";
 
-import {Product} from "../types";
+import { Product } from "../types";
 
 // se realiza reuest con gql
 const SEARCH = gql`
@@ -28,13 +28,15 @@ interface Variables {
 const SearchScreen: React.FC = () => {
   const query = new URLSearchParams(useLocation().search);
 
-  const {loading, error, data} = useQuery<Query, Variables>(SEARCH, {
-    variables: {query: query.get("query")},
+  const { loading, error, data } = useQuery<Query, Variables>(SEARCH, {
+    variables: { query: query.get("query") },
   });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error</p>;
   if (!data) return <p>No results found</p>;
+
+  console.log(data)
 
   return (
     <Stack divider={<Divider />} spacing={6}>
@@ -47,7 +49,7 @@ const SearchScreen: React.FC = () => {
                 {product.title}
               </Text>
               <Text>
-                {product.price.toLocaleString("es-AR", {style: "currency", currency: "ARS"})}
+                {product.price.toLocaleString("es-AR", { style: "currency", currency: "ARS" })}
               </Text>
             </Stack>
           </Stack>
