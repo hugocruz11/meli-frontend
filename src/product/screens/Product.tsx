@@ -71,7 +71,7 @@ const ProductScreen: React.FC = () => {
               radius="5%"
               text="Comprar"
               width="80%"
-              onClick={() => console.log("You clicked on the pink circle!")}
+              onClick={() => console.log("You clicked")}
             />
           </Stack>
         </Stack>
