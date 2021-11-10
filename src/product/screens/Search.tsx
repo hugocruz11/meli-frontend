@@ -36,8 +36,6 @@ const SearchScreen: React.FC = () => {
   if (error) return <p>Error</p>;
   if (!data) return <p>No results found</p>;
 
-  console.log(data)
-
   return (
     <Stack divider={<Divider />} spacing={6}>
       {data.products.map((product) => (
